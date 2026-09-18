@@ -72,6 +72,7 @@ export async function build(root=project){
   for(const [name,archive] of archives)await fs.writeFile(path.join(out,'downloads',name),archive);
   const catalogCode=`window.SKILLS_CATALOG = ${JSON.stringify({repository,branch,skills:records}).replace(/</g,'\\u003c')};\n`;
   await fs.writeFile(path.join(out,'catalog.js'),catalogCode);
+  await fs.writeFile(path.join(out,'catalog.json'),JSON.stringify({repository,branch,skills:records}));
   // Ship the list and UI together so cached catalog.js cannot hide newly uploaded Skills.
   const css=await fs.readFile(path.join(root,'style.css'),'utf8');
   const app=await fs.readFile(path.join(root,'app.js'),'utf8');
