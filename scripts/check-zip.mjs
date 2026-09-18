@@ -18,7 +18,7 @@ await assert.rejects(build(root),/不安全路径/);
 await fs.writeFile(path.join(root,'skills/bad.zip'),zipSync({'README.md':doc}));
 await assert.rejects(build(root),/明确的 SKILL.md/);
 await fs.writeFile(path.join(root,'skills/bad.zip'),zipSync({'a/SKILL.md':doc,'b/SKILL.md':doc}));
-await assert.rejects(build(root),/明确的 SKILL.md/);
+const bundled=await build(root);assert.match(bundled.find(s=>s.id==='bad.zip').description,/Skills 合集（2 个）/);
 await fs.writeFile(path.join(root,'skills/bad.zip'),Buffer.from('not a zip'));
 await assert.rejects(build(root));
 console.log('PASS: root/nested ZIP, uppercase extension, Chinese paths, original archive bytes, invalid archives and traversal rejection');

@@ -33,11 +33,16 @@ export async function build(root=project){
         }
         return false;
       }});
-      const rootDoc=candidates.includes('SKILL.md')?'SKILL.md':candidates.length===1?candidates[0]:null;
+      const isBundle=!candidates.includes('SKILL.md')&&candidates.length>1;
+      const rootDoc=candidates.includes('SKILL.md')?'SKILL.md':candidates[0];
       if(!rootDoc)throw Error(`${entry.name}：需要一个明确的 SKILL.md（根目录或单个 Skill 文件夹中）`);
       const doc=strFromU8(docs[rootDoc]).replace(/^\uFEFF/,'');
       const front=doc.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
       const metadata=front?parse(front[1]):{};
+      if(isBundle){
+        metadata.name=entry.name.replace(/\.zip$/i,'');
+        metadata.description=`Skills 合集（${candidates.length} 个）：${candidates.map(p=>p.split('/').slice(0,-1).join('/')).join('、')}。下载后请分别安装各 Skill。`;
+      }
       archives.push([entry.name,archive]);
       records.push({id:entry.name,name:typeof metadata?.name==='string'?metadata.name:entry.name.replace(/\.zip$/i,''),description:typeof metadata?.description==='string'?metadata.description:'',files:count,size:archive.length,download:entry.name,source:entry.name,sourceType:'blob'});
       continue;
