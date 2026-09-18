@@ -18,7 +18,9 @@ npm run preview
 
 ## 添加 Skill
 
-每个 Skill 必须是 `skills/` 下的独立文件夹，且具有 `SKILL.md`：
+支持直接把 ZIP 上传到 `skills/`，也支持独立文件夹。ZIP 内的 `SKILL.md` 可以在根目录，也可以在包内的单个 Skill 文件夹里。每个 ZIP 对应一个 Skill；名称和简介自动读取，下载保留原始 ZIP。复制链接指向仓库中的 ZIP 文件。
+
+文件夹方式应具有 `SKILL.md`：
 
 ```text
 skills/
@@ -28,7 +30,7 @@ skills/
     templates/
 ```
 
-`SKILL.md` 示例（不要只上传 ZIP；系统从文件夹生成 ZIP）：
+`SKILL.md` 示例：
 
 ```markdown
 ---
@@ -52,9 +54,9 @@ description: 简短介绍这个 Skill 的用途。
 
 发布流程自动读取当前仓库名和分支，不需要填写或在网页存储 Token。GitHub 内置的临时授权用于 Pages 发布。
 
-「上传 Skill」跳转到该仓库 `skills/` 的 GitHub 上传页面。请把含有 SKILL.md 的整个 Skill 文件夹拖入页面，确认保留文件夹层级，再提交到 main。需要登录有仓库写入权限的账号。上传后需等待 Actions 发布完成，再刷新网站。
+「上传 Skill」跳转到该仓库 `skills/` 的 GitHub 上传页面。请把 ZIP 压缩包或含有 SKILL.md 的整个 Skill 文件夹拖入页面，再提交到 main。需要登录有仓库写入权限的账号。上传后需等待 Actions 发布完成，再刷新网站。
 
-「复制链接」复制 GitHub Skill 文件夹地址，不保证所有 AI 工具都可以一键安装。「下载」下载完整 ZIP。删除 Skill 文件夹并提交后，下一次发布会同步移除它。
+「复制链接」复制 GitHub Skill 文件夹或 ZIP 文件地址，不保证所有 AI 工具都可以一键安装。「下载」下载完整 ZIP。删除 Skill 文件夹并提交后，下一次发布会同步移除它。
 
 本地预览要启用真实仓库链接时，修改 `site.config.json` 的 `repository` 为 `用户名/仓库名` 后重新构建。尚未设置时，上传和复制显示连接说明，不产生虚假链接。工作流默认监听 main；如果改用其他分支，请同步修改工作流。
 
