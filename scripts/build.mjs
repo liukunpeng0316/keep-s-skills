@@ -68,9 +68,19 @@ export async function build(root=project){
   // All inputs are validated before replacing generated output. Only dist is removed.
   await fs.rm(out,{recursive:true,force:true});
   await fs.mkdir(path.join(out,'downloads'),{recursive:true});
-  for(const asset of ['index.html','style.css','app.js'])await fs.copyFile(path.join(root,asset),path.join(out,asset));
+  for(const asset of ['style.css','app.js'])await fs.copyFile(path.join(root,asset),path.join(out,asset));
   for(const [name,archive] of archives)await fs.writeFile(path.join(out,'downloads',name),archive);
-  await fs.writeFile(path.join(out,'catalog.js'),`window.SKILLS_CATALOG = ${JSON.stringify({repository,branch,skills:records}).replace(/</g,'\\u003c')};\n`);
+  const catalogCode=`window.SKILLS_CATALOG = ${JSON.stringify({repository,branch,skills:records}).replace(/</g,'\\u003c')};\n`;
+  await fs.writeFile(path.join(out,'catalog.js'),catalogCode);
+  // Ship the list and UI together so cached catalog.js cannot hide newly uploaded Skills.
+  const css=await fs.readFile(path.join(root,'style.css'),'utf8');
+  const app=await fs.readFile(path.join(root,'app.js'),'utf8');
+  const html=(await fs.readFile(path.join(root,'index.html'),'utf8'))
+    .replace('<link rel="stylesheet" href="style.css">',()=>`<style>${css}</style>`)
+    .replace('<script src="catalog.js" defer></script>','')
+    .replace('<script src="app.js" defer></script>','')
+    .replace('</body>',()=>`<script>${catalogCode}${app.replace(/<\/script/gi,'<\\/script')}</script></body>`);
+  await fs.writeFile(path.join(out,'index.html'),html);
   await fs.writeFile(path.join(out,'.nojekyll'),'');
   console.log(`已生成 ${records.length} 个 Skills，输出：${out}`);
   return records;
