@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "eventId": "328429a3-780f-454b-b4f1-4a8b859f65be",
+  "event": "saved",
+  "occurredAt": "2026-10-02T12:05:51.833Z",
+  "archivePath": "site-backup/files/ceb04ddd-bc3d-4c81-94ef-c9f8cd30f4c7.zip",
+  "sha256": "34d89dae7ba8bf31b80b524daf7b0a2106070ac03c6c23a41ac6316d10bf1a0b",
+  "skill": {
+    "id": "ceb04ddd-bc3d-4c81-94ef-c9f8cd30f4c7",
+    "name": "xiaohongshu-reader",
+    "description": "读取小红书笔记内容（文字+图片），绕过反爬机制",
+    "filename": "xiaohongshu-reader.zip",
+    "size": 3599,
+    "files": 1,
+    "bundle": false,
+    "members": [
+      "xiaohongshu-reader"
+    ],
+    "sourceUrl": "https://github.com/liukunpeng0316/keep-s-skills/blob/main/skills/xiaohongshu-reader.zip",
+    "updatedAt": "2026-10-02T00:00:00.000Z"
+  }
+}
