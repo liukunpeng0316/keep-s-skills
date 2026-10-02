@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "eventId": "6c83d790-a396-4a25-87d3-a0673a9b7fd6",
+  "event": "saved",
+  "occurredAt": "2026-10-02T12:05:51.798Z",
+  "archivePath": "site-backup/files/97b92ab8-ab7e-4d7e-9a3c-14fe2f8bdb7e.zip",
+  "sha256": "7c548a64ceb01c3be0bc46be7e8805c85db7dd1e2bab037f9c90d5607d5758bc",
+  "skill": {
+    "id": "97b92ab8-ab7e-4d7e-9a3c-14fe2f8bdb7e",
+    "name": "grill-with-docs-bundle",
+    "description": "Skills 合集（3 个）：grill-with-docs、grilling、domain-modeling。下载后请分别安装各 Skill。",
+    "filename": "grill-with-docs-bundle.zip",
+    "size": 10131,
+    "files": 15,
+    "bundle": true,
+    "members": [
+      "grill-with-docs",
+      "grilling",
+      "domain-modeling"
+    ],
+    "sourceUrl": "https://github.com/liukunpeng0316/keep-s-skills/blob/main/skills/grill-with-docs-bundle.zip",
+    "updatedAt": "2026-10-02T00:00:00.000Z"
+  }
+}
