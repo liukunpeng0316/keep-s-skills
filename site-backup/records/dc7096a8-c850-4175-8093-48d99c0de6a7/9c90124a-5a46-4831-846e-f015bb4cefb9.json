@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "eventId": "9c90124a-5a46-4831-846e-f015bb4cefb9",
+  "event": "saved",
+  "occurredAt": "2026-10-02T12:05:51.815Z",
+  "archivePath": "site-backup/files/dc7096a8-c850-4175-8093-48d99c0de6a7.zip",
+  "sha256": "9a07c39e405ec6ba560c14bd2dc888ea04c41c87bfddfff07e2032efec2b799f",
+  "skill": {
+    "id": "dc7096a8-c850-4175-8093-48d99c0de6a7",
+    "name": "wechat-article-reader",
+    "description": "读取微信公众号文章内容，绕过环境检测验证",
+    "filename": "wechat-article-reader.zip",
+    "size": 1606,
+    "files": 1,
+    "bundle": false,
+    "members": [
+      "wechat-article-reader"
+    ],
+    "sourceUrl": "https://github.com/liukunpeng0316/keep-s-skills/blob/main/skills/wechat-article-reader.zip",
+    "updatedAt": "2026-10-02T00:00:00.000Z"
+  }
+}
